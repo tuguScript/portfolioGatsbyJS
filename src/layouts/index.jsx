@@ -9,7 +9,12 @@ import Footer from '../components/Footer/Footer'
 import { List, Icon } from 'antd'
 import Link from 'gatsby-link'
 import colors from '../utils/colors'
-import 'font-awesome/css/font-awesome.min.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faIdCard,
+  faArchive,
+  faComments,
+} from '@fortawesome/free-solid-svg-icons'
 
 const styles = {
   container: {
@@ -43,9 +48,9 @@ const styles = {
 }
 
 const navData = [
-  { desc: 'About', link: '/about', icon: 'idcard' },
-  { desc: 'Works', link: '/works', icon: 'fork' },
-  { desc: 'Contact', link: '/contact', icon: 'contacts' },
+  { desc: 'About', link: '/about', icon: faIdCard },
+  { desc: 'Works', link: '/works', icon: faArchive },
+  { desc: 'Contact', link: '/contact', icon: faComments },
 ]
 
 const UnstyledLayout = ({ children, data, classes }) => (
@@ -69,16 +74,16 @@ const UnstyledLayout = ({ children, data, classes }) => (
         renderItem={item => (
           <List.Item>
             <Link
-              style={{ color: 'white' }}
+              style={{ color: 'white', textDecoration: 'none' }}
               to={item.link}
               activeStyle={{
                 fontWeight: 'bold',
                 color: `${colors.PRIMARY}`,
               }}
             >
-              <Icon
-                type={item.icon}
+              <FontAwesomeIcon
                 style={{ fontSize: 14, marginRight: '20px', color: 'white' }}
+                icon={item.icon}
               />
               {item.desc}
             </Link>
